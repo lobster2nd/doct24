@@ -1,10 +1,9 @@
-from django.shortcuts import render
+from rest_framework import generics
 from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from .models import Category, Subcategory, User, Cart
-from .serializers import CategorySerializer, SubcategorySerializer
+from .models import Category, Product
+from .serializers import CategorySerializer, ProductSerializer
 
 
 class ApiViewPagination(PageNumberPagination):
@@ -16,4 +15,10 @@ class ApiViewPagination(PageNumberPagination):
 class CategoryAPIView(generics.ListAPIView):
     queryset = Category.objects.prefetch_related('subcategories')
     serializer_class = CategorySerializer
+    pagination_class = ApiViewPagination
+
+
+class ProductAPIView(generics.ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
     pagination_class = ApiViewPagination
