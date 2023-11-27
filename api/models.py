@@ -2,6 +2,7 @@ import os
 
 from django.contrib.auth.models import AbstractUser
 from django.core.files import File
+from django.contrib.auth.models import User
 from django.db import models
 from PIL import Image
 
@@ -91,14 +92,8 @@ class Product(models.Model):
             self.image_large = File(open(img_large_path, 'rb'))
 
 
-class User(AbstractUser):
-
-    def __str__(self):
-        return self.username
-
-
 class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product)
 
     def __str__(self):
