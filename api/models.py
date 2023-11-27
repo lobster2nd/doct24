@@ -1,6 +1,5 @@
 import os
 
-from django.contrib.auth.models import AbstractUser
 from django.core.files import File
 from django.contrib.auth.models import User
 from django.db import models

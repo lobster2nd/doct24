@@ -5,6 +5,7 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .models import Category, Product, Cart
@@ -58,3 +59,52 @@ def cart_view(request):
         cart = Cart.objects.filter(user=request.user).first()
         cart.products.clear()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class AddToCartView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        product_id = request.data.get('product_id')
+        quantity = request.data.get('quantity', 1)
+
+        try:
+            product = Product.objects.get(id=product_id)
+        except Product.DoesNotExist:
+            return Response({'error': 'Product not found'}, status=404)
+
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        cart.products.add(product, through_defaults={'quantity': quantity})
+
+        return Response({'success': 'Product added to cart'}, status=200)
+
+
+class UpdateCartItemView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, cart_item_id):
+        quantity = request.data.get('quantity')
+
+        try:
+            cart_item = Cart.products.through.objects.get(id=cart_item_id, cart__user=request.user)
+        except Cart.products.through.DoesNotExist:
+            return Response({'error': 'Cart item not found'}, status=404)
+
+        cart_item.quantity = quantity
+        cart_item.save()
+
+        return Response({'success': 'Cart item updated'}, status=200)
+
+
+class RemoveFromCartView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, cart_item_id):
+        try:
+            cart_item = Cart.products.through.objects.get(id=cart_item_id, cart__user=request.user)
+        except Cart.products.through.DoesNotExist:
+            return Response({'error': 'Cart item not found'}, status=404)
+
+        cart_item.delete()
+
+        return Response({'success': 'Cart item removed'}, status=200)
