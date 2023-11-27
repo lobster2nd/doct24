@@ -10,22 +10,30 @@ git clone https://github.com/lobster2nd/doct24.git
 cd doct24
 ```  
 + Cоздать и активировать виртуальное окружение:   
-```python -m venv env```  
-```source env/bin/activate```  
+```
+python -m venv env
+```  
+```
+source env/bin/activate
+```  
 + Перейти в директорию и установить зависимости из файла requirements.txt:  
-```pip install -r requirements.txt```  
+```
+pip install -r requirements.txt
+```  
 + Выполнить команду:  
-```python3 manage.py runserver```  
+```
+python3 manage.py runserver
+```  
 
 Endpoints:
- + http://127.0.0.1:8000/category_list/ - список категорий  
- + http://127.0.0.1:8000/product_list/ - список продуктов  
- + http://127.0.0.1:8000/cart/ - просмотр корзины  
- + http://127.0.0.1:8000/cart/add/ - добавление товар в корзину. JSON `{"product_id": ..., "quantity": ...}`  
- + http://127.0.0.1:8000/cart/update/<int:cart_item_id>/ - изменение товаров в корзине. JSON `{"product_id": ..., "quantity": ...}`  
- + http://127.0.0.1:8000/cart/remove/<int:cart_item_id>/ - удаление товара из корзины. JSON `{"product_id": ...}`  
- + http://127.0.0.1:8000/auth/ - авторизация по токену  
- + http://127.0.0.1:8000/token/ - авторизация по JWT  
+ + http://127.0.0.1:8000/api/v1/category_list/ - список категорий  
+ + http://127.0.0.1:8000/api/v1/product_list/ - список продуктов  
+ + http://127.0.0.1:8000/api/v1/cart/ - просмотр корзины  
+ + http://127.0.0.1:8000/api/v1/cart/add/ - добавление товар в корзину. JSON `{"product_id": ..., "quantity": ...}`  
+ + http://127.0.0.1:8000/api/v1/cart/update/<int:cart_item_id>/ - изменение товаров в корзине. JSON `{"product_id": ..., "quantity": ...}`  
+ + http://127.0.0.1:8000/api/v1/cart/remove/<int:cart_item_id>/ - удаление товара из корзины. JSON `{"product_id": ...}`  
+ + http://127.0.0.1:8000/api/v1/auth/ - авторизация по токену  
+ + http://127.0.0.1:8000/api/v1/token/ - авторизация по JWT  
 
 
 Проект магазина продуктов со следующим функционалом:  
