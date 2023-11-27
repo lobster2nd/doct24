@@ -29,9 +29,9 @@ Endpoints:
  + http://127.0.0.1:8000/api/v1/category_list/ - список категорий  
  + http://127.0.0.1:8000/api/v1/product_list/ - список продуктов  
  + http://127.0.0.1:8000/api/v1/cart/ - просмотр корзины  
- + http://127.0.0.1:8000/api/v1/cart/add/ - добавление товар в корзину. JSON `{"product_id": ..., "quantity": ...}`  
- + http://127.0.0.1:8000/api/v1/cart/update/<int:cart_item_id>/ - изменение товаров в корзине. JSON `{"product_id": ..., "quantity": ...}`  
- + http://127.0.0.1:8000/api/v1/cart/remove/<int:cart_item_id>/ - удаление товара из корзины. JSON `{"product_id": ...}`  
+ + http://127.0.0.1:8000/api/v1/cart/add/ - добавление товар в корзину 
+ + http://127.0.0.1:8000/api/v1/cart/update/<int:cart_item_id>/
+ + http://127.0.0.1:8000/api/v1/cart/remove/<int:cart_item_id>/
  + http://127.0.0.1:8000/api/v1/auth/ - авторизация по токену  
  + http://127.0.0.1:8000/api/v1/token/ - авторизация по JWT  
 
