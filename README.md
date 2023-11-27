@@ -9,13 +9,13 @@
 git clone https://github.com/lobster2nd/doct24.git  
 cd doct24
 ```  
-+ Cоздать и активировать виртуальное окружение:  
-```python -m venv env```
++ Cоздать и активировать виртуальное окружение:   
+```python -m venv env```  
 ```source env/bin/activate```  
 + Перейти в директорию и установить зависимости из файла requirements.txt:  
-```pip install -r requirements.txt```
-+ Выполнить команду:
-```python3 manage.py runserver```
+```pip install -r requirements.txt```  
++ Выполнить команду:  
+```python3 manage.py runserver```  
 
 Endpoints:
  + http://127.0.0.1:8000/category_list/ - список категорий  
