@@ -2,6 +2,10 @@
 
 Решение тестового задания задания №1 нахоидится в файле sequence.py 
 
+## Стек технологий  
+
+<img src="https://img.shields.io/badge/Python - black?style=for-the-badge&logo=Python&logoColor=blue"/> <img src="https://img.shields.io/badge/Django - black?style=for-the-badge&logo=Django&logoColor=white"/> <img src="https://img.shields.io/badge/Django REST Framework - black?style=for-the-badge"/> <img src="https://img.shields.io/badge/sqlite - black?style=for-the-badge&logo=sqlite&logoColor=blue"/> <img src="https://img.shields.io/badge/Djoser - black?style=for-the-badge"/> <img src="https://img.shields.io/badge/Pillow - black?style=for-the-badge"/>
+
 
 ## Установка проекта локально  
 + Склонировать репозиторий и перейти в него в командной строке:  
